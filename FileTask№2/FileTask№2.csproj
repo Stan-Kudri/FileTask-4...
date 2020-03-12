@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModifiedTextLines.cs" />
+    <Compile Include="FileTask-1.cs" />
+    <Compile Include="FileTask-2.cs" />
+    <Compile Include="FileTask-3.cs" />
+    <Compile Include="FileTask-4.cs" />
+    <Compile Include="FileTask-5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

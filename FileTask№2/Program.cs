@@ -7,8 +7,12 @@ using System.IO;
 
 namespace FileTask_2
 {
-    /* №1: Дан текстовый файл. В каждой строке перенести последний символ в начало строки.
-    */
+    /* №1: Дан текстовый файл. В каждой строке перенести последний символ в начало строки.    
+       №2: Имеется текстовый файл. Выяснить, имеется ли в нем строка, начинающаяся с буквы «т». Если да, то определить номер первой из таких строк.
+       №3: В текстовом файле записаны вещественные числа (на каждой строчке - несколько, разделены несколькими пробелами, в формате 3.14 2.597) и другие лексемы (не числа). Найти сумму чисел, игнорируя неверные лексемы.
+       №4: Дан текстовый файл. Удалить из него последние 5 строк.
+       №5: Дан текстовый файл. Переписать его содержимое в новый файл, обрезав длину исходных строк согласно числу, значение которое передано в метод.
+       */
 
     class Program
     {
@@ -18,36 +22,24 @@ namespace FileTask_2
             DirectoryInfo driveInfo = new DirectoryInfo(path);
             if (!driveInfo.Exists)
                 driveInfo.Create();
-            var txt = new ModifiedTextLines();
+
+            var task1 = new FileTask_1();
+            task1.Task1(path);
+
+            var task2 = new FileTask_2();
+            task2.Task2(path);
+
+            var task3 = new FileTask_3();
+            task3.Task3(path);
+
+            var task4 = new FileTask_4();
+            task4.Task4(path);
+
+            int characters = 5;
+            var task5 = new FileTask_5();
+            task5.Task5(path, characters);
 
 
-            using (StreamReader streamReader = new StreamReader($@"{path}\TextDocumentForTasks.txt", Encoding.Default))
-            {
-                while (!streamReader.EndOfStream)
-                {
-                    string str = streamReader.ReadLine();
-                    var array = str.ToCharArray();
-                    if (array.Length >= 2)
-                    {
-                        StringBuilder stringBuilder = new StringBuilder(array.Length);
-                        stringBuilder.Append(array[array.Length - 1]);
-                        stringBuilder.Append(array, 0, array.Length - 1);
-                        txt.Add(stringBuilder.ToString());
-                    }
-                    else
-                    {
-                        txt.Add(str);
-                    }
-                }
-            }
-
-            using (StreamWriter streamWriter = new StreamWriter($@"{path}\TextDocumentForTasks.txt", false))
-            {
-                for(int i = 1; i < txt.NumberLine; i++)
-                {
-                    streamWriter.WriteLine(txt.Output(i));
-                }
-            }
 
             Console.ReadLine();
         }
