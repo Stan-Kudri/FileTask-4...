@@ -12,9 +12,9 @@ namespace FileTask_2
         //№5: Дан текстовый файл.Переписать его содержимое в новый файл, обрезав длину исходных строк согласно числу, значение которое передано в метод.
         private List<string> txt = new List<string>();
 
-        public void Task5(string path, int characters)
-        {
-            using (StreamReader streamReader = new StreamReader($@"{path}\Task5.txt", Encoding.Default))
+        public void Task5(string path, int characters, string newpath)
+        {            
+            using (StreamReader streamReader = new StreamReader(path, Encoding.UTF8))
             {
                 while(!streamReader.EndOfStream)
                 {
@@ -29,7 +29,7 @@ namespace FileTask_2
                     }                        
                 }
             }
-            using (StreamWriter streamWriter = new StreamWriter($@"{path}\ModifiedTextTask5.txt", false, Encoding.Default))
+            using (StreamWriter streamWriter = new StreamWriter(newpath, false, Encoding.UTF8))
             {
                 foreach (string str in txt)
                     streamWriter.WriteLine(str);

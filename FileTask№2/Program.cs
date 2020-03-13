@@ -23,21 +23,28 @@ namespace FileTask_2
             if (!driveInfo.Exists)
                 driveInfo.Create();
 
+            string textFileLocation;
+
+            textFileLocation = $@"C:\Users\Stan_Kudri\source\repos\FileTask№2\FileTask№2\bin\Debug\File-Task\TextDocumentForTasks.txt";
             var task1 = new FileTask_1();
-            task1.Task1(path);
+            task1.Task1(textFileLocation);
 
+            textFileLocation = $@"C:\Users\Stan_Kudri\source\repos\FileTask№2\FileTask№2\bin\Debug\File-Task\Task2.txt";
             var task2 = new FileTask_2();
-            task2.Task2(path);
+            task2.Task2(textFileLocation);
 
+            textFileLocation = $@"C:\Users\Stan_Kudri\source\repos\FileTask№2\FileTask№2\bin\Debug\File-Task\Task3.txt";
             var task3 = new FileTask_3();
-            task3.Task3(path);
+            task3.Task3(textFileLocation);
 
+            textFileLocation = $@"C:\Users\Stan_Kudri\source\repos\FileTask№2\FileTask№2\bin\Debug\File-Task\Task4.txt";
             var task4 = new FileTask_4();
-            task4.Task4(path);
+            task4.Task4(textFileLocation);
 
+            textFileLocation = $@"C:\Users\Stan_Kudri\source\repos\FileTask№2\FileTask№2\bin\Debug\File-Task\Task5.txt";
             int characters = 5;
             var task5 = new FileTask_5();
-            task5.Task5(path, characters);
+            task5.Task5(textFileLocation, characters, $@"C:\Users\Stan_Kudri\source\repos\FileTask№2\FileTask№2\bin\Debug\File-Task\ModifiedTextTask5.txt");
 
 
 

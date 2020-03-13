@@ -10,27 +10,16 @@ namespace FileTask_2
     class FileTask_4
     {
         //№4: Дан текстовый файл. Удалить из него последние 5 строк.
-
-        private List<string> txt = new List<string>();
-
+        
         public void Task4(string path)
         {
-            int count = File.ReadAllLines($@"{path}\Task4.txt").Length;
-
-            using (StreamReader streamReader = new StreamReader($@"{path}\Task4.txt", Encoding.Default))
+            string[] txt = File.ReadAllLines(path, Encoding.UTF8);
+            int delete = 5;
+            
+            using (StreamWriter streamWrite = new StreamWriter(path, false, Encoding.UTF8))
             {
-                while(!streamReader.EndOfStream)
-                {
-                    if (txt.Count != count - 5)
-                        txt.Add(streamReader.ReadLine());
-                    else break;
-                }
-            }
-
-            using (StreamWriter streamWrite = new StreamWriter($@"{path}\Task4.txt", false, Encoding.Default))
-            {
-                foreach (var str in txt)
-                    streamWrite.WriteLine(str);
+                for (int i = 0; i < txt.Length - delete; i++)
+                    streamWrite.WriteLine(txt[i]);
             }
         }
     }

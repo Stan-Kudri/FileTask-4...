@@ -15,18 +15,14 @@ namespace FileTask_2
 
         public void Task1(string path)
         {
-            using (StreamReader streamReader = new StreamReader($@"{path}\TextDocumentForTasks.txt", Encoding.Default))
+            using (StreamReader streamReader = new StreamReader(path, Encoding.UTF8))
             {
                 while (!streamReader.EndOfStream)
                 {
-                    string str = streamReader.ReadLine();
-                    var array = str.ToCharArray();
-                    if (array.Length >= 1)
+                    string str = streamReader.ReadLine();                
+                    if (str.Length >= 1)
                     {
-                        StringBuilder stringBuilder = new StringBuilder(array.Length);
-                        stringBuilder.Append(array[array.Length - 1]);
-                        stringBuilder.Append(array, 0, array.Length - 1);
-                        txt.Add(stringBuilder.ToString());
+                        txt.Add(str.Substring(str.Length) + str.Substring(0, str.Length - 1));
                     }
                     else
                     {
@@ -34,11 +30,7 @@ namespace FileTask_2
                     }
                 }
             }
-            using (StreamWriter streamWrite = new StreamWriter($@"{path}\TextDocumentForTasks.txt", false,Encoding.Default))
-            {
-                foreach (var str in txt)
-                    streamWrite.WriteLine(str);
-            }                
+            File.WriteAllLines(path, txt,Encoding.UTF8);
         }
     }
 }

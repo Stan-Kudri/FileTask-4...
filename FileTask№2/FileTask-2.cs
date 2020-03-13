@@ -13,21 +13,21 @@ namespace FileTask_2
     {
         public void Task2(string path)
         {
-            using (StreamReader streamReader = new StreamReader($@"{path}\Task2.txt", Encoding.Default))
+            using (StreamReader streamReader = new StreamReader(path, Encoding.UTF8))
             {
+                int number=0;
                 while (!streamReader.EndOfStream)
                 {                    
                     string str = streamReader.ReadLine();
-                    if(str.Length != 0)
+                    number++;
+                    if (str.Length != 0)
                     {
-                        var latter = str.ToCharArray();
-                        if (latter[0] == 'т' || latter[0] == 'Т')
-                        {
-                            Console.WriteLine($"Первая из строк начинающая с буквы <т>: {str}");
+                        if (str.StartsWith("т") || str.StartsWith("Т"))
+                        {                            
+                            Console.WriteLine($"{number} строка, является первой, которая начинается с буквы <т>: {str}");
                             return;
                         }
-                    }
-                                    
+                    }                                    
                 }
                 Console.WriteLine("Строки начинающей с буквы <т> нету!");
             }

@@ -13,16 +13,17 @@ namespace FileTask_2
 
         public void Task3(string path)
         {
-            using (StreamReader streamReader = new StreamReader($@"{path}\Task3.txt", Encoding.Default))
+            using (StreamReader streamReader = new StreamReader(path, Encoding.UTF8))
             {
                 float sum = 0;
+                var separators = new[] { ' ' };
                 while (!streamReader.EndOfStream)
                 {
-                    var str = streamReader.ReadLine().Split(' ');
+                    var str = streamReader.ReadLine().Split(separators,StringSplitOptions.RemoveEmptyEntries);
                     foreach (var number in str)
                     {
-                        float value;
-                        float.TryParse(string.Join("", number.Where(c => char.IsDigit(c))), out value);
+                        float value;                        
+                        float.TryParse(number, out value);
                         sum += value;
                     }
                 }
